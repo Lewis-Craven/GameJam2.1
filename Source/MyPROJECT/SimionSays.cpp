@@ -16,6 +16,8 @@ void ASimionSays::BeginPlay()
 {
 	Super::BeginPlay();
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Hello World, this is AdventureGameMode!"));
+	nextRound();
+
 }
 
 // Called every frame
@@ -23,5 +25,26 @@ void ASimionSays::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ASimionSays::playSimonSaysSequence()
+{
+
+}
+
+void ASimionSays::nextRound()
+{
+	Playerindex = 0;
+	int32 newStep = FMath::RandRange(0, 3);
+
+	for (int32 step : simonSaysSequence)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Simon"));
+	}
+
+}
+
+void ASimionSays::resetGame()
+{
 }
 

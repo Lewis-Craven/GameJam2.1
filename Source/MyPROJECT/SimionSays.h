@@ -23,4 +23,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+protected:
+	void playSimonSaysSequence();
+	void nextRound();
+	void resetGame();
+
+private:
+	UPROPERTY(EditAnywhere)
+	int32 Numbuttons = 4;
+
+	TArray<int32> simonSaysSequence;
+	int32 Playerindex = 0;
 };
