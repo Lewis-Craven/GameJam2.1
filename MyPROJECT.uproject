@@ -28,10 +28,6 @@
 		{
 			"Name": "MetaHumanSDK",
 			"Enabled": false
-		},
-		{
-			"Name": "Metasound",
-			"Enabled": false
 		}
 	]
 }
