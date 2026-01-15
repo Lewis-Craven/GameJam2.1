@@ -78,18 +78,13 @@ void ASimonSays::generateRandomSequence(int32 Length)
 		Sequence.Add(NewStep);
 	}
 
-	// debug on length
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Yellow, FString::Printf(TEXT("Sequence length %d"), Sequence.Num()));
-	}
+
 }
 
 void ASimonSays::registerInput(ESimonButtonType buttonIndex)
 {
 	if (SimonState != ESimonState::WaitingForInput)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Nuh uh"));
 		return;
 	}
 
@@ -97,15 +92,7 @@ void ASimonSays::registerInput(ESimonButtonType buttonIndex)
 	// Check if the input matches the expected step
 	if (buttonIndex == Sequence[currentInputIndex])
 	{
-		// debug checked what button was pressed
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			1.5f,
-			FColor::Blue,
-			FString::Printf(TEXT("Input %d: %s"),
-				currentInputIndex,
-				*UEnum::GetValueAsString(buttonIndex))
-		);
+		
 
 		// Correct input
 		currentInputIndex++;
@@ -164,7 +151,7 @@ void ASimonSays::playSequence()
 		StepDelay, // Time between steps
 		true
 	);
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Playing sequence"));
+	
 }
 
 void ASimonSays::playNextStep()
@@ -178,16 +165,6 @@ void ASimonSays::playNextStep()
 	}
 
 	Step = Sequence[PlayIndex];
-
-	// debug what step is being played
-	GEngine->AddOnScreenDebugMessage(
-		-1,
-		1.5f,
-		FColor::Green,
-		FString::Printf(TEXT("Step %d: %s"),
-			PlayIndex,
-			*UEnum::GetValueAsString(Step))
-	);
 
 	glowButton();
 	PlayIndex++;
